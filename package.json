@@ -1,0 +1,37 @@
+{
+  "name": "netsimtri",
+  "version": "0.1.0",
+  "description": "Simulator jaringan untuk pembelajaran CCNA dan CCNP di Program Studi Teknologi Rekayasa Internet, Polinela",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "engine",
+    "cli",
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "build": "tsc --build",
+    "typecheck": "tsc --build --dry",
+    "dev": "node --watch server/dist/index.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^2.0.0"
+  }
+}

@@ -1,0 +1,36 @@
+# Dependensi
+node_modules/
+
+# Hasil build
+dist/
+build/
+*.tsbuildinfo
+
+# Cakupan tes
+coverage/
+
+# Data runtime lokal
+data/runtime/
+*.local
+
+# Log
+*.log
+npm-debug.log*
+
+# Berkas sistem dan editor
+.DS_Store
+.vscode/
+.idea/
+
+# Variabel lingkungan
+.env
+.env.*
+!.env.example
+
+# JANGAN PERNAH commit materi berlisensi pihak lain (NFR-12).
+# Image IOS/IOS-XE, file Packet Tracer, materi Academy, dan soal ujian.
+*.bin
+*.pkt
+*.pka
+cisco-ios/
+academy-material/

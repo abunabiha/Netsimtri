@@ -1,0 +1,49 @@
+{
+  "exam": "ccna-200-301-v1.1",
+  "title": "Cisco Certified Network Associate (CCNA) v1.1",
+  "validUntil": "2027-02-02",
+  "domains": [
+    {
+      "id": "1.0",
+      "name": "Network Fundamentals",
+      "weight": 20,
+      "source": "secondary",
+      "objectives": []
+    },
+    {
+      "id": "2.0",
+      "name": "Network Access",
+      "weight": 20,
+      "source": "secondary",
+      "objectives": []
+    },
+    {
+      "id": "3.0",
+      "name": "IP Connectivity",
+      "weight": 25,
+      "source": "secondary",
+      "objectives": []
+    },
+    {
+      "id": "4.0",
+      "name": "IP Services",
+      "weight": 10,
+      "source": "secondary",
+      "objectives": []
+    },
+    {
+      "id": "5.0",
+      "name": "Security Fundamentals",
+      "weight": 15,
+      "source": "secondary",
+      "objectives": []
+    },
+    {
+      "id": "6.0",
+      "name": "Automation and Programmability",
+      "weight": 10,
+      "source": "secondary",
+      "objectives": []
+    }
+  ]
+}

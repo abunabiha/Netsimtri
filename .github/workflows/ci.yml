@@ -1,0 +1,68 @@
+name: CI
+
+# Jalan di setiap push ke branch mana pun, dan di setiap pull request ke main.
+on:
+  push:
+  pull_request:
+    branches: [main]
+
+# Batalkan run lama jika ada push baru di ref yang sama, untuk hemat waktu antrean.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Lint, test, dan build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout kode
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js sesuai .nvmrc
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependensi
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test unit
+        run: npm test
+
+      - name: Build web dan server
+        run: npm run build
+
+      # Audit dependensi. Tidak menggagalkan build untuk kerentanan rendah,
+      # tetapi melaporkan yang tingkat tinggi. Sesuaikan ambangnya jika perlu.
+      - name: Audit dependensi
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
+  docker-build:
+    name: Verifikasi Docker image bisa di-build
+    runs-on: ubuntu-latest
+    # Hanya build untuk memastikan Dockerfile valid. Tidak push di CI.
+    steps:
+      - name: Checkout kode
+        uses: actions/checkout@v4
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image (tanpa push)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          # Verifikasi build untuk satu arsitektur di CI agar cepat.
+          # Build multi-arsitektur (amd64 dan arm64) dilakukan di release.yml.
+          platforms: linux/amd64
+          tags: netsimtri:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

@@ -1,0 +1,21 @@
+# Jangan salin ke image: hemat ukuran dan hindari kebocoran.
+node_modules/
+dist/
+build/
+coverage/
+.git/
+.github/
+docs/
+*.md
+.env
+.env.*
+*.log
+.DS_Store
+.vscode/
+.idea/
+
+# Materi berlisensi pihak lain (NFR-12).
+*.pkt
+*.pka
+cisco-ios/
+academy-material/
