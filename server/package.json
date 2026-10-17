@@ -8,5 +8,8 @@
     "build": "tsc --build",
     "clean": "tsc --build --clean",
     "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@netsimtri/engine": "^0.1.0"
   }
 }

@@ -1,6 +1,9 @@
 export * from "./types.js";
 export * from "./event-queue.js";
 export * from "./simulation-engine.js";
+export * from "./topology/types.js";
+export * from "./topology/platform-catalog.js";
+export * from "./topology/topology-manager.js";
 
 /**
  * Engine placeholder ping function.
