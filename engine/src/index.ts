@@ -1,6 +1,10 @@
+export * from "./types.js";
+export * from "./event-queue.js";
+export * from "./simulation-engine.js";
+
 /**
  * Engine placeholder ping function.
- * Verifies test pipeline and basic engine logic.
+ * Kept for basic connectivity checks and backward compatibility.
  */
 export function ping(target: string): string {
   if (!target) {
