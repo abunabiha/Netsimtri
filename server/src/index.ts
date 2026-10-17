@@ -38,10 +38,15 @@ export function createServer(): http.Server {
   });
 }
 
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 // Jalankan server jika berkas ini dieksekusi langsung
-if (process.env.NODE_ENV !== "test" && import.meta.url === `file://${process.argv[1]}`) {
+const isMain = process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
+if (process.env.NODE_ENV !== "test" && isMain) {
   const server = createServer();
   server.listen(PORT, () => {
-    console.log(`NetSimTRI server berjalan di port ${PORT}`);
+    console.log(`NetSimTRI server berjalan di http://localhost:${PORT}`);
   });
 }
+
